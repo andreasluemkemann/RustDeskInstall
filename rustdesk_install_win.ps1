@@ -426,6 +426,7 @@ function RustdeskMenu {
             Get-Service -ErrorAction SilentlyContinue | Where-Object -Property Name -Like "rustdesk" | Stop-Service -ErrorAction SilentlyContinue
             Get-Process -ErrorAction SilentlyContinue | Where-Object -Property Name -Like "rustdesk" | Stop-Process -ErrorAction SilentlyContinue
             Start-Process -FilePath $global:RustdeskUpdateExe -ArgumentList "--silent-install" -Verb RunAs
+            Start-Sleep -Seconds 6
             Start-Process -FilePath "C:\Program Files\RustDesk\rustdesk.exe" -ArgumentList "--install-service" -Verb RunAs -WorkingDirectory $RustdeskPath -ErrorAction SilentlyContinue
         }
         "Configure" {
